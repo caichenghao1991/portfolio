@@ -1,0 +1,27 @@
+<footer class="footer-container text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p> Website created by Chenghao Cai |   <a href="https://github.com/caichenghao1991" title="Feel free to visit my github">
+          <img src="./static/images/Github.png" id="gitimg" style="width:20px;height:20px" /><span id="git" style="color:grey;text-decoration:none;">Github</span></a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+$("#git").hover(function(){
+    $("#git").css({"color":"grey","text-decoration":"underline"});
+    $("#gitimg").css("opacity",".6");
+
+},function(){
+    $("#git").css({"color":"black","text-decoration":"none"});
+    $("#gitimg").css("opacity","1");
+
+});
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     navActivePage();
+  });
+</script>

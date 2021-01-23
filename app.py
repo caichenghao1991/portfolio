@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import csv
 from kaggleProject import retrieve_csv
 import logging
+import sys
 
 app = Flask(__name__)
 '''
@@ -58,4 +59,5 @@ def download_kaggle_data():  # subject=None, count=None
 
 
 if __name__ == '__main_':
-    app.run(debug=True, port=443, host='0.0.0.0')  # run app in debug mode on port 5000
+    h = sys.argv[1:]
+    app.run(debug=True, port=443, host=h)  # run app in debug mode on port 5000

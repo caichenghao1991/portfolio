@@ -7,7 +7,7 @@ app = Flask(__name__)
 '''
 @app.route('/user/<username>/<int:id>')  #http://127.0.0.1:5000/user/harry/1
 def hello(username=None, id=None):
-	return render_template('index.html', name=username, pid=id)#http://127.0.0.1:5000/user/harry/1
+return render_template('index.html', name=username, pid=id)#http://127.0.0.1:5000/user/harry/1
 
 set FLASK_APP = "app.py"
 set FLASK_ENV=development
@@ -27,7 +27,7 @@ def html(page_name):
 
 
 @app.route('/submit_form', methods=['POST', 'GET'])
-def submit_form(subject=None, email=None, message=None):
+def submit_form(email=None):  # subject=None, email=None, message=None
     try:
         data = request.form.to_dict()
         email = request.form['email']
@@ -45,21 +45,17 @@ def submit_form(subject=None, email=None, message=None):
 
 
 @app.route('/download_kaggle_data', methods=['POST', 'GET'])
-def download_kaggle_data(subject=None, count=None):
-    '''
-
-    data = request.form.to_dict()
-
-    count = data["count"]
-    retrieve_csv(subject,count)
-    '''
-
+def download_kaggle_data():  # subject=None, count=None
     data = request.form.to_dict()
     subject = data["subject"]
     count = int(data["num"])
 
     logging.warning(f'{subject} {count}')
-    files=retrieve_csv(subject, count)
-    # return data
+    files = retrieve_csv(subject, count)
 
-    return render_template('work1.html', message=f'{count} data file(s):{", ".join(files)} downloaded. Proceed to second step.')
+    return render_template('work1.html',
+                           message=f'{count} data file(s):{", ".join(files)} downloaded. Proceed to second step.')
+
+
+if __name__ == '__main_':
+    app.run(debug=True, port=5000, host='127.0.0.1')  # run app in debug mode on port 5000

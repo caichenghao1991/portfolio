@@ -58,4 +58,4 @@ def download_kaggle_data():  # subject=None, count=None
 
 
 if __name__ == '__main_':
-    app.run(debug=True, port=5000, host='127.0.0.1')  # run app in debug mode on port 5000
+    app.run(debug=True, port=443, host='0.0.0.0')  # run app in debug mode on port 5000
